@@ -24,21 +24,20 @@ main =
 
 
 type alias Model a =
-    {  renderedText : a }
+    { renderedText : a }
 
 
 type Msg
-    =   NoOp
+    = NoOp
 
 
 type alias Flags =
-    {sourceText : String}
-
+    { sourceText : String }
 
 
 init : Flags -> ( Model (Html msg), Cmd Msg )
 init flags =
-    ( { renderedText = render flags.sourceText} , Cmd.none )
+    ( { renderedText = render flags.sourceText }, Cmd.none )
 
 
 subscriptions : Model (Html msg) -> Sub Msg
@@ -49,15 +48,13 @@ subscriptions model =
 update : Msg -> Model (Html msg) -> ( Model (Html msg), Cmd Msg )
 update msg model =
     case msg of
-
-        NoOp -> (model, Cmd.none)
+        NoOp ->
+            ( model, Cmd.none )
 
 
 render : String -> Html msg
 render sourceText =
     MiniLatex.render "$$ $$" sourceText
-
-
 
 
 view : Model (Html Msg) -> Html Msg
@@ -67,21 +64,16 @@ view model =
         ]
 
 
-
-
 display : Model (Html Msg) -> Html Msg
 display model =
     div []
         [ renderedSource model ]
 
 
-
-
 renderedSource : Model (Html msg) -> Html msg
 renderedSource model =
     Html.div renderedSourceStyle
         [ model.renderedText ]
-
 
 
 
@@ -122,4 +114,3 @@ labelStyle =
 
 
 -- TEXT
-
