@@ -5,96 +5,40 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
 	<title>MiniLatex Live</title>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/custom-elements/1.1.1/custom-elements.min.js"></script>
 
 	<script type="text/x-mathjax-config">
-			MathJax.Hub.Config(
-				{ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
-				processEscapes: true,
-				messageStyle: "none",
-				processSectionDelay: 0,
-				processUpdateTime: 0,
-				TeX: { equationNumbers: {autoNumber: "AMS"},
-					   noErrors: {disabled: true}
-					  }
-				}
-	        );
-		</script>
+		MathJax.Hub.Config(
+			{ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+			processEscapes: true,
+			messageStyle: "none",
+			processSectionDelay: 0,
+			processUpdateTime: 0,
+			TeX: { equationNumbers: {autoNumber: "AMS"},
+				   noErrors: {disabled: true}
+				  }
+			}
+		);
+	</script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-	<script src="Main.js" charset="utf-8"></script>
 
+	<script src="Main.js" charset="utf-8"></script>
 </head>
 
 <body>
 
+	<div id="source" style="display:none">
+		Test: $a^3 = 7$.
+
+		Another test: $$a^3 = 7$$
+	</div>
+
+
 	<div id="main"></div>
 
-	<script>
-
-		var root = document.getElementById('main');
-		var app = Elm.Main.init({ node: root, flags: { sourceText: "$a^2 + b^2 = c^2$" } });
-
-		var typesetTimeout = null
-		var typesetQueue = []
-		function enqueueTypeset(el) {
-			// console.log("enqueueTypeset: " + el)
-			typesetQueue.push(el)
-			clearTimeout(typesetTimeout)
-			typesetTimeout = setTimeout(function () {
-				var toTypeset = typesetQueue
-				MathJax.Hub.Queue(["resetEquationNumbers", MathJax.InputJax.TeX]);
-				MathJax.Hub.Queue(['Typeset', MathJax.Hub, typesetQueue], function (arg) {
-					toTypeset.forEach(function (el) { el.style.opacity = 1 })
-				})
-				typesetQueue = []
-			}, 1)
-		}
-
-		var updateQueue = []
-		var updateTimeout = null
-		function enqueueUpdate(el) {
-			// console.log("enqueueUpdate: " + el)
-			updateQueue.push(el)
-			clearTimeout(updateTimeout)
-			updateTimeout = setTimeout(function () {
-				MathJax.Hub.Queue(['Update', MathJax.Hub, updateQueue])
-				updateQueue = []
-			}, 0)
-		}
-
-		customElements.define('math-text', class extends HTMLElement {
-			constructor() {
-				super()
-				this._content = this.content
-			}
-
-			get content() {
-				// console.log("get content: " + this._content)
-				return this._content
-			}
-
-			set content(value) {
-				// console.log("set content: " + value)
-				if (this._content === value) return
-				this._content = value
-				var jaxScript = this.querySelector('script')
-				if (!jaxScript) return
-				jaxScript.textContent = this._content
-				enqueueUpdate(this)
-			}
-
-			connectedCallback() {
-				// console.log("connectedCallback: " + this._content )
-				this.textContent = this._content
-				this._connected = true
-				this.style.opacity = 1
-				this.style.display = 'inline'
-				enqueueTypeset(this)
-			}
-		})
-	</script>
-
+	<script src="body.js"> </script>
 
 </body>
 
