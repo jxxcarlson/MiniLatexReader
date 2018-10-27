@@ -18,6 +18,10 @@ for a demonstration.
 
 4. Copy the files `index.html` and `Main.min.js` to your webserver.
 
+**Note.** I've moved the app to MathJax 3.0, which is still in beta.  If you
+want use MathJax 2.7, use `index-old.html`.  If you use MathJax 3.0, you will
+also have to copy the file `mj3-tex2html-simple.dist.js`.
+
 ## Customizing the app.
 
 If you make changes to `index.html`, there is nothing further to do.
