@@ -1,11 +1,10 @@
-MiniLatex Reader
-====================
+# MiniLatex Reader
 
-MiniLatex Reade is a small app which can be
+MiniLatex Reader is a small app which can be
 embedded in a web page and used to display
-LaTeX as HTML.  Look at
+LaTeX as HTML. Look at
 the [MiniLatex Reader Demo](https://jxxcarlson.github.io/app/miniLatexReader/index.html)
-and the instructions on that web page.  Here is how to
+and the instructions on that web page. Here is how to
 compile the source file, then to minify it.
 
 ```
@@ -15,10 +14,10 @@ compile the source file, then to minify it.
 
 The files required for the app to work are
 
-1. `index.Html`
+1. `index.html`
 2. `body.js`
 3. `Main.min.js`
 
-Run by clicking on `index.html`.  To use your own
+Run by clicking on `index.html`. To use your own
 content, replace the contents of the div in `index.html`
 with id="source".
