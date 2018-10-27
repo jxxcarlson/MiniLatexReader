@@ -20,7 +20,9 @@ for a demonstration.
 
 **Note.** I've moved the app to MathJax 3.0, which is still in beta.  If you
 want use MathJax 2.7, use `index-old.html`.  If you use MathJax 3.0, you will
-also have to copy the file `mj3-tex2html-simple.dist.js`.
+also have to copy the file `mj3-tex2html-simple.dist.js`.  There will no
+doubt be some changes to `index.html` once I understand MathJax 3.0. better.
+
 
 ## Customizing the app.
 
