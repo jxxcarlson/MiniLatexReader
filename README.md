@@ -3,7 +3,7 @@
 MiniLatex Reader is a small app which can be
 embedded in a web page and used to display
 LaTeX as HTML. Please see
-the [MiniLatex Reader Demo](https://jxxcarlson.github.io/app/miniLatexReader/index.html)
+[MiniLatex Reader](https://jxxcarlson.github.io/app/miniLatexReader/index.html)
 for a demonstration.
 
 ## Using MiniLatex Reader
